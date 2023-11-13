@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
 
+/**
+ * DTO для представления предмета оценки студента за предмет.
+ */
 @Data
 @NoArgsConstructor
 @Schema(description = "Оценка ученика за предмет.")

@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * Сущность, представляющая учебный план (Curriculum) для определенной учебной группы.
+ */
 @Entity
 @Table(name = "curricula")
 @Data

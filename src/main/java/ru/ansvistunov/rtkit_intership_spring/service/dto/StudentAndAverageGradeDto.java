@@ -7,6 +7,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * DTO для представления информации о студенте и его средней оценке.
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

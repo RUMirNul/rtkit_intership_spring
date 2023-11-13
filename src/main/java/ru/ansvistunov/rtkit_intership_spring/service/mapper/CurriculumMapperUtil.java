@@ -11,17 +11,28 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+/**
+ * Утилитарный класс для маппинга между StudyGroupEntity и groupId.
+ */
 @Component
 @AllArgsConstructor
 public class CurriculumMapperUtil {
     private final StudyGroupRepository studyGroupRepository;
 
+    /**
+     * Метод для поиска учебной группы по идентификатору.
+     *
+     * @param groupId Идентификатор учебной группы.
+     * @return Сущность StudyGroupEntity.
+     */
     @StudyGroupEntityByGroupId
     public StudyGroupEntity findStudyGroupByStudent(int groupId) {
         return studyGroupRepository.getReferenceById(groupId);
     }
 
-
+    /**
+     * Квалификатор для указания MapStruct на использование данного метода при маппинге.
+     */
     @Qualifier
     @Target(ElementType.METHOD)
     @Retention(RetentionPolicy.SOURCE)

@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+/**
+ * Сущность, представляющая оценку (Grade) в рамках учебного предмета (Curriculum) для конкретного студента (Person).
+ */
 @Entity
 @Table(name = "grades")
 @Data

@@ -7,6 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+/**
+ * DTO для представления предмета группы (учебного плана).
+ */
 @Data
 @NoArgsConstructor
 @Schema(description = "Предмет группы(учебный план).")

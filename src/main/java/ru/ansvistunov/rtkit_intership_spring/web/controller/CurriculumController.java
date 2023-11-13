@@ -17,12 +17,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ansvistunov.rtkit_intership_spring.service.CurriculumService;
 import ru.ansvistunov.rtkit_intership_spring.service.dto.CurriculumDto;
-import ru.ansvistunov.rtkit_intership_spring.service.dto.StudentAndAverageGradeDto;
-import ru.ansvistunov.rtkit_intership_spring.service.dto.StudyGroupDto;
 import ru.ansvistunov.rtkit_intership_spring.web.constant.WebConstant;
 
 import java.util.List;
 
+/**
+ * Контроллер для работы с учебными планами групп.
+ */
 @RestController
 @RequestMapping(WebConstant.URL_VERSION + "/curriculum")
 @Validated

@@ -68,7 +68,6 @@ public class StudentController {
         return studentService.addStudent(studentDto);
     }
 
-
     @PutMapping("/study_group")
     @Operation(summary = "Добавление студента в группу.",
             description = "Добавляет студента в группу по ID студента и ID группы. " +
@@ -87,5 +86,4 @@ public class StudentController {
 
         return studentService.updateStudyGroup(mappedRequest);
     }
-
 }

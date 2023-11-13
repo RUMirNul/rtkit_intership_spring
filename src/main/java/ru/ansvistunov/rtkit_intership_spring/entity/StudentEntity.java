@@ -7,6 +7,9 @@ import lombok.ToString;
 
 import java.util.List;
 
+/**
+ * Сущность, представляющая студента (Person) в системе.
+ */
 @Entity
 @Table(name = "students")
 @Data

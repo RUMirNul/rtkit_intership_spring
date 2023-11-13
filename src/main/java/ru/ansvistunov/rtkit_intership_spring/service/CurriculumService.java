@@ -12,6 +12,9 @@ import ru.ansvistunov.rtkit_intership_spring.service.mapper.CurriculumMapper;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Сервис для работы с учебными планами.
+ */
 @Service
 @AllArgsConstructor
 @Slf4j
@@ -19,7 +22,13 @@ public class CurriculumService {
     private final CurriculumRepository curriculumRepository;
     private final CurriculumMapper curriculumMapper;
 
-
+    /**
+     * Получение учебного плана по его идентификатору.
+     *
+     * @param curriculumId Идентификатор учебного плана.
+     * @return Объект CurriculumDto, представляющий учебный план.
+     * @throws NotFoundException в случае, если учебный план с заданным идентификатором не найден.
+     */
     public CurriculumDto getCurriculumById(int curriculumId) {
         log.info("Получение учебного плана по id = {}", curriculumId);
 
@@ -33,6 +42,12 @@ public class CurriculumService {
         return foundCurriculumDto;
     }
 
+    /**
+     * Получение списка учебных планов по идентификатору группы.
+     *
+     * @param groupId Идентификатор группы.
+     * @return Список объектов CurriculumDto, представляющих учебные планы группы.
+     */
     public List<CurriculumDto> getCurriculumsByGroupId(int groupId) {
         log.info("Получение учебных планов по id группы = {}", groupId);
 

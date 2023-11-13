@@ -14,7 +14,6 @@ import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.ansvistunov.rtkit_intership_spring.service.GradeService;
-import ru.ansvistunov.rtkit_intership_spring.service.dto.CurriculumDto;
 import ru.ansvistunov.rtkit_intership_spring.service.dto.GradeDto;
 import ru.ansvistunov.rtkit_intership_spring.service.dto.UpdateGradeDto;
 import ru.ansvistunov.rtkit_intership_spring.service.mapper.GradeMapper;

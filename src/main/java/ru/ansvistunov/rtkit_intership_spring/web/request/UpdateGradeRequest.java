@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
 
+/**
+ * Запрос для обновления оценки.
+ */
 @Data
 @NoArgsConstructor
 @Schema(description = "Запрос обновления оценки.")

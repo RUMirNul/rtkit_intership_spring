@@ -1,11 +1,17 @@
 package ru.ansvistunov.rtkit_intership_spring.web.request;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Length;
 
+/**
+ * Запрос для создания записи о студенте.
+ */
 @Data
 @NoArgsConstructor
 @Schema(description = "Запрос для создания записи о студенте.")

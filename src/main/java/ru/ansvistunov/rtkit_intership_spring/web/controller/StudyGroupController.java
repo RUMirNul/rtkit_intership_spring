@@ -12,9 +12,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.ansvistunov.rtkit_intership_spring.service.dto.StudentDto;
-import ru.ansvistunov.rtkit_intership_spring.service.dto.StudyGroupDto;
 import ru.ansvistunov.rtkit_intership_spring.service.StudyGroupService;
+import ru.ansvistunov.rtkit_intership_spring.service.dto.StudyGroupDto;
 import ru.ansvistunov.rtkit_intership_spring.web.constant.WebConstant;
 
 import java.util.List;

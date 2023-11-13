@@ -1,0 +1,128 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: ansvistunov
+      changes:
+        - createTable:
+            tableName: studygroups
+            columns:
+              - column:
+                  name: group_id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: group_name
+                  type: INT
+                  constraints:
+                    unique: true
+
+  - changeSet:
+      id: 2
+      author: ansvistunov
+      changes:
+        - createTable:
+            tableName: students
+            columns:
+              - column:
+                  name: student_id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: family_name
+                  type: VARCHAR(255)
+              - column:
+                  name: age
+                  type: INT
+              - column:
+                  name: group_id
+                  type: INT
+
+  - changeSet:
+      id: 3
+      author: ansvistunov
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: students
+            baseColumnNames: group_id
+            constraintName: fk_students_studygroups
+            referencedTableName: studygroups
+            referencedColumnNames: group_id
+
+  - changeSet:
+      id: 4
+      author: ansvistunov
+      changes:
+        - createTable:
+            tableName: curricula
+            columns:
+              - column:
+                  name: curricula_id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: group_id
+                  type: INT
+              - column:
+                  name: subject_name
+                  type: VARCHAR(255)
+
+  - changeSet:
+      id: 5
+      author: ansvistunov
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: curricula
+            baseColumnNames: group_id
+            constraintName: fk_curricula_studygroups
+            referencedTableName: studygroups
+            referencedColumnNames: group_id
+
+  - changeSet:
+      id: 6
+      author: ansvistunov
+      changes:
+        - createTable:
+            tableName: grades
+            columns:
+              - column:
+                  name: grade_id
+                  type: SERIAL
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: student_id
+                  type: INT
+              - column:
+                  name: curricula_id
+                  type: INT
+              - column:
+                  name: grade
+                  type: INT
+
+  - changeSet:
+      id: 7
+      author: ansvistunov
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: grades
+            baseColumnNames: student_id
+            constraintName: fk_grades_students
+            referencedTableName: students
+            referencedColumnNames: student_id
+
+  - changeSet:
+      id: 8
+      author: ansvistunov
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: grades
+            baseColumnNames: curricula_id
+            constraintName: fk_grades_curricula
+            referencedTableName: curricula
+            referencedColumnNames: curricula_id

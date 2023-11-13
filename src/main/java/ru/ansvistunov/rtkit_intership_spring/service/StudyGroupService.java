@@ -12,6 +12,9 @@ import ru.ansvistunov.rtkit_intership_spring.service.mapper.StudyGroupMapper;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Сервис для работы с учебными группами.
+ */
 @Service
 @AllArgsConstructor
 @Slf4j
@@ -20,6 +23,13 @@ public class StudyGroupService {
     private final StudyGroupRepository studyGroupRepository;
     private final StudyGroupMapper studyGroupMapper;
 
+    /**
+     * Получение учебной группы по её уникальному идентификатору.
+     *
+     * @param groupId Уникальный идентификатор учебной группы.
+     * @return Объект {@link StudyGroupDto}, представляющий учебную группу.
+     * @throws NotFoundException в случае, если учебная группа с указанным идентификатором не найдена.
+     */
     public StudyGroupDto getStudyGroupByGroupId(int groupId) {
         log.info("Получен запрос на получение учебной группы по уникальному идентификатору groupId: {}", groupId);
 
@@ -33,6 +43,11 @@ public class StudyGroupService {
         return studyGroupDto;
     }
 
+    /**
+     * Получение списка всех учебных групп.
+     *
+     * @return Список объектов {@link StudyGroupDto}, представляющих учебные группы.
+     */
     public List<StudyGroupDto> getAllGroups() {
         log.info("Получение всех групп.");
 
@@ -40,8 +55,9 @@ public class StudyGroupService {
                 .stream()
                 .filter(Objects::nonNull)
                 .map(studyGroupMapper::studyGroupEntityToStudyGroupDto)
-                .peek(mappedStudyGroup -> log.info("Сопоставленный объект: {}", mappedStudyGroup))
+                .peek(mappedStudyGroup -> log.info("Сопоставленный объект StudyGroupDto: {}", mappedStudyGroup))
                 .toList();
+        log.info("Список учебных групп: {}", result);
 
         return result;
     }

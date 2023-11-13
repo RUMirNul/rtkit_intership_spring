@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.Range;
 
+/**
+ * DTO для обновления оценки за предмет.
+ */
 @Data
 @NoArgsConstructor
 public class UpdateGradeDto {

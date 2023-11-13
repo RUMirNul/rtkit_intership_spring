@@ -7,18 +7,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import ru.ansvistunov.rtkit_intership_spring.entity.StudentEntity;
-import ru.ansvistunov.rtkit_intership_spring.entity.StudyGroupEntity;
 import ru.ansvistunov.rtkit_intership_spring.exception.InvalidGroupChangeException;
 import ru.ansvistunov.rtkit_intership_spring.exception.NotFoundException;
 import ru.ansvistunov.rtkit_intership_spring.repository.StudentRepository;
-import ru.ansvistunov.rtkit_intership_spring.repository.StudyGroupRepository;
-import ru.ansvistunov.rtkit_intership_spring.service.dto.*;
+import ru.ansvistunov.rtkit_intership_spring.service.dto.StudentAndAverageGradeDto;
+import ru.ansvistunov.rtkit_intership_spring.service.dto.StudentDto;
+import ru.ansvistunov.rtkit_intership_spring.service.dto.StudentUpdateStudyGroupDto;
+import ru.ansvistunov.rtkit_intership_spring.service.dto.StudyGroupDto;
 import ru.ansvistunov.rtkit_intership_spring.service.mapper.StudentMapper;
-import ru.ansvistunov.rtkit_intership_spring.service.mapper.StudyGroupMapper;
 
 import java.util.List;
-import java.util.Objects;
 
+/**
+ * Сервис для работы со студентами.
+ */
 @Service
 @AllArgsConstructor
 @Validated
@@ -29,6 +31,12 @@ public class StudentService {
     private final StudentMapper studentMapper;
 
 
+    /**
+     * Получение средней оценки в указанной группе.
+     *
+     * @param groupNumber Номер группы.
+     * @return Список объектов {@link StudentAndAverageGradeDto}, представляющих среднюю оценку студента в группе.
+     */
     @Transactional
     public List<StudentAndAverageGradeDto> getAverageGradeInClass(int groupNumber) {
         log.info("Получение средней оценки в группе: {}", groupNumber);
@@ -39,6 +47,12 @@ public class StudentService {
         return result;
     }
 
+    /**
+     * Добавление нового студента.
+     *
+     * @param newStudent Новые данные о студенте.
+     * @return Объект {@link StudentDto} представляющий добавленного студента.
+     */
     @Transactional
     public StudentDto addStudent(@Valid StudentDto newStudent) {
         log.info("Запрос добавления нового студента: {}", newStudent);
@@ -55,6 +69,14 @@ public class StudentService {
         return addedStudentDto;
     }
 
+    /**
+     * Обновление группы студента.
+     *
+     * @param studentUpdateStudyGroupDto Данные для обновления группы студента.
+     * @return Обновленный объект {@link StudentDto}.
+     * @throws NotFoundException           в случае, если студент с указанным идентификатором не найден.
+     * @throws InvalidGroupChangeException в случае, если студент уже состоит в группе.
+     */
     @Transactional
     public StudentDto updateStudyGroup(@Valid StudentUpdateStudyGroupDto studentUpdateStudyGroupDto) {
         log.info("Запрос обновления группы студента: {}", studentUpdateStudyGroupDto);

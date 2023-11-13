@@ -5,6 +5,9 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * DTO для представления учебной группы.
+ */
 @Data
 @NoArgsConstructor
 @Schema(description = "Учебная группа.")
