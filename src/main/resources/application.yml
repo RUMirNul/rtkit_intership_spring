@@ -1,0 +1,16 @@
+swagger-api:
+  version: "1.0"
+
+server:
+  port: 8080
+spring:
+  liquibase:
+    enabled: false
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  datasource:
+    url: jdbc:postgresql://localhost:5432/rtkit_intership
+    username: test
+    password: test
+    driver-class-name: org.postgresql.Driver
