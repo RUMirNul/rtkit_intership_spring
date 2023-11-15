@@ -1,6 +1,7 @@
 package ru.ansvistunov.rtkit.intership.spring.service;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -59,7 +60,7 @@ public class GradeService {
      * @param studentId Идентификатор студента.
      * @return Список объектов GradeDto, представляющих оценки студента.
      */
-    public List<GradeDto> getGradesByStudentId(int studentId) {
+    public List<GradeDto> getGradesByStudentId(@Min(0) int studentId) {
         log.info("Получения оценок студента с id = {}", studentId);
 
         List<GradeEntity> studentGradeEntities = gradeRepository.getAllGradeByStudentId(studentId);

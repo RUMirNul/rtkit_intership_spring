@@ -1,6 +1,7 @@
 package ru.ansvistunov.rtkit.intership.spring.service;
 
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -38,7 +39,7 @@ public class StudentService {
      * @return Список объектов {@link StudentAndAverageGradeDto}, представляющих среднюю оценку студента в группе.
      */
     @Transactional
-    public List<StudentAndAverageGradeDto> getAverageGradeInClass(int groupNumber) {
+    public List<StudentAndAverageGradeDto> getAverageGradeInClass(@Min(0) int groupNumber) {
         log.info("Получение средней оценки в группе: {}", groupNumber);
 
         List<StudentAndAverageGradeDto> result = studentRepository.findAverageGradeInClass(groupNumber);

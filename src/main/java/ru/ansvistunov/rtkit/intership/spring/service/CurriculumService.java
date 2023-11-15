@@ -1,8 +1,10 @@
 package ru.ansvistunov.rtkit.intership.spring.service;
 
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import ru.ansvistunov.rtkit.intership.spring.entity.CurriculumEntity;
 import ru.ansvistunov.rtkit.intership.spring.exception.NotFoundException;
 import ru.ansvistunov.rtkit.intership.spring.repository.CurriculumRepository;
@@ -17,6 +19,7 @@ import java.util.Objects;
  */
 @Service
 @AllArgsConstructor
+@Validated
 @Slf4j
 public class CurriculumService {
     private final CurriculumRepository curriculumRepository;
@@ -29,7 +32,7 @@ public class CurriculumService {
      * @return Объект CurriculumDto, представляющий учебный план.
      * @throws NotFoundException в случае, если учебный план с заданным идентификатором не найден.
      */
-    public CurriculumDto getCurriculumById(int curriculumId) {
+    public CurriculumDto getCurriculumById(@Min(0) int curriculumId) {
         log.info("Получение учебного плана по id = {}", curriculumId);
 
         CurriculumEntity foundCurriculum = curriculumRepository.findById(curriculumId)
@@ -48,7 +51,7 @@ public class CurriculumService {
      * @param groupId Идентификатор группы.
      * @return Список объектов CurriculumDto, представляющих учебные планы группы.
      */
-    public List<CurriculumDto> getCurriculumsByGroupId(int groupId) {
+    public List<CurriculumDto> getCurriculumsByGroupId(@Min(0) int groupId) {
         log.info("Получение учебных планов по id группы = {}", groupId);
 
         List<CurriculumEntity> foundCurriculumEntities = curriculumRepository.findAllCurriculumByGroupId(groupId);

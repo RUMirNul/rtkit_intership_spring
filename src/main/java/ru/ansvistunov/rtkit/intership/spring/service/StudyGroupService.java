@@ -1,8 +1,10 @@
 package ru.ansvistunov.rtkit.intership.spring.service;
 
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 import ru.ansvistunov.rtkit.intership.spring.entity.StudyGroupEntity;
 import ru.ansvistunov.rtkit.intership.spring.exception.NotFoundException;
 import ru.ansvistunov.rtkit.intership.spring.repository.StudyGroupRepository;
@@ -17,6 +19,7 @@ import java.util.Objects;
  */
 @Service
 @AllArgsConstructor
+@Validated
 @Slf4j
 public class StudyGroupService {
 
@@ -30,7 +33,7 @@ public class StudyGroupService {
      * @return Объект {@link StudyGroupDto}, представляющий учебную группу.
      * @throws NotFoundException в случае, если учебная группа с указанным идентификатором не найдена.
      */
-    public StudyGroupDto getStudyGroupByGroupId(int groupId) {
+    public StudyGroupDto getStudyGroupByGroupId(@Min(0) int groupId) {
         log.info("Получен запрос на получение учебной группы по уникальному идентификатору groupId: {}", groupId);
 
         StudyGroupEntity studyGroupEntity = studyGroupRepository.findById(groupId)
