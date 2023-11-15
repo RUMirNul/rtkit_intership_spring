@@ -1,13 +1,14 @@
 package ru.ansvistunov.rtkit.intership.spring.service.mapper;
 
 import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
 import ru.ansvistunov.rtkit.intership.spring.entity.StudyGroupEntity;
 import ru.ansvistunov.rtkit.intership.spring.service.dto.StudyGroupDto;
 
 /**
  * Интерфейс маппера для преобразования между объектами StudyGroupEntity и StudyGroupDto.
  */
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface StudyGroupMapper {
 
     /**

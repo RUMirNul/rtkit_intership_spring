@@ -81,7 +81,7 @@ public class StudentController {
     public StudentDto updateStudyGroup(@Valid @RequestBody StudentUpdateStudyGroupRequest request) {
         log.info("Запрос обновления группы студента: {}", request);
 
-        StudentUpdateStudyGroupDto mappedRequest = studentMapper.studentUpdateStudyGroupRequestToStudentUpdateStudyGroupDto(request);
+        StudentUpdateStudyGroupDto mappedRequest = studentMapper.updateStudentGroupRequestToUpdateStudentGroupDto(request);
         log.info("Сопоставленный объект StudentUpdateGradeDto: {}", mappedRequest);
 
         return studentService.updateStudyGroup(mappedRequest);
