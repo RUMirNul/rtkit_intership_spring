@@ -7,5 +7,5 @@ public class WebConstant {
     /**
      * URL-префикс версии API.
      */
-    public static final String URL_VERSION = "/api/v1/school/magazine";
+    public static final String URL_VERSION = "/api/school/magazine";
 }
