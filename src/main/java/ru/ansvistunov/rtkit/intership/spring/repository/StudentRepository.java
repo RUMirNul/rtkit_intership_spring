@@ -19,7 +19,8 @@ public interface StudentRepository extends JpaRepository<StudentEntity, Integer>
      * @param groupNumber Номер группы.
      * @return Список DTO, представляющих студента и среднюю оценку в указанной группе.
      */
-    @Query(value = "SELECT NEW ru.ansvistunov.rtkit.intership.spring.service.dto.StudentAndAverageGradeDto(p.name, p.familyName, p.age, sg.groupName, AVG(g.grade)) " +
+    @Query(value = "SELECT NEW ru.ansvistunov.rtkit.intership.spring.service.dto." +
+            "StudentAndAverageGradeDto(p.name, p.familyName, p.age, sg.groupName, AVG(g.grade)) " +
             "FROM StudentEntity p " +
             "JOIN p.group sg " +
             "LEFT JOIN p.grades g " +
