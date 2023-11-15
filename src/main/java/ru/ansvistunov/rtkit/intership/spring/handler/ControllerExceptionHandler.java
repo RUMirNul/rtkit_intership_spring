@@ -44,7 +44,7 @@ public class ControllerExceptionHandler {
     @ExceptionHandler(InvalidGroupChangeException.class)
     public ResponseEntity<BaseWebResponse> handleInvalidGroupChangeException(@NonNull final InvalidGroupChangeException e) {
         log.error(e.getMessage());
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new BaseWebResponse(createErrorMessage(e)));
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new BaseWebResponse(createErrorMessage(e)));
     }
 
     /**
@@ -61,7 +61,7 @@ public class ControllerExceptionHandler {
                 .map(violation -> new Violation(violation.getPropertyPath().toString(), violation.getMessage()))
                 .toList();
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ValidationErrorResponse(violations));
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ValidationErrorResponse(violations));
     }
 
     /**
@@ -78,7 +78,7 @@ public class ControllerExceptionHandler {
                 .map(violation -> new Violation(violation.getField(), violation.getDefaultMessage()))
                 .toList();
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new ValidationErrorResponse(violations));
+        return ResponseEntity.status(HttpStatus.CONFLICT).body(new ValidationErrorResponse(violations));
     }
 
 
