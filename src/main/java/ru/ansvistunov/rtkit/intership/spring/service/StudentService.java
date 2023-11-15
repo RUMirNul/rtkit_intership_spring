@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
+import ru.ansvistunov.rtkit.intership.spring.entity.StudyGroupEntity;
 import ru.ansvistunov.rtkit.intership.spring.exception.InvalidGroupChangeException;
 import ru.ansvistunov.rtkit.intership.spring.service.dto.StudentAndAverageGradeDto;
 import ru.ansvistunov.rtkit.intership.spring.service.dto.StudentDto;
@@ -16,6 +17,7 @@ import ru.ansvistunov.rtkit.intership.spring.entity.StudentEntity;
 import ru.ansvistunov.rtkit.intership.spring.exception.NotFoundException;
 import ru.ansvistunov.rtkit.intership.spring.repository.StudentRepository;
 import ru.ansvistunov.rtkit.intership.spring.service.dto.StudyGroupDto;
+import ru.ansvistunov.rtkit.intership.spring.service.mapper.StudyGroupMapper;
 
 import java.util.List;
 
@@ -30,6 +32,7 @@ public class StudentService {
     private final StudentRepository studentRepository;
     private final StudyGroupService studyGroupService;
     private final StudentMapper studentMapper;
+    private final StudyGroupMapper studyGroupMapper;
 
 
     /**
@@ -94,15 +97,12 @@ public class StudentService {
         StudyGroupDto studyGroupDto = studyGroupService.getStudyGroupByGroupId(studentUpdateStudyGroupDto.getGroupId());
         log.info("Найдена группа: {}", studyGroupDto);
 
-        StudentDto foundStudentDto = studentMapper.personEntityToPersonDto(foundStudentEntity);
-        log.info("Сопоставленная сущность StudentDto: {}", foundStudentDto);
+        StudyGroupEntity studyGroupEntity = studyGroupMapper.studyGroupDtoToStudyEntity(studyGroupDto);
+        log.info("Сопоставленная сущность StudyGroupEntity: {}", studyGroupEntity);
 
-        foundStudentDto.setGroupId(studyGroupDto.getId());
+        foundStudentEntity.setGroup(studyGroupEntity);
 
-        StudentEntity studentEntity = studentMapper.personDtoToPersonEntity(foundStudentDto);
-        log.info("Сопоставленная сущность StudentEntity: {}", studentEntity);
-
-        StudentEntity updatedStudent = studentRepository.save(studentEntity);
+        StudentEntity updatedStudent = studentRepository.save(foundStudentEntity);
         log.info("Обновленная информация о студенте: {}", updatedStudent);
 
         StudentDto updatedStudentDto = studentMapper.personEntityToPersonDto(updatedStudent);
