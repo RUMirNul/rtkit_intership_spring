@@ -89,7 +89,8 @@ public class StudentService {
                 .orElseThrow(() -> new NotFoundException(String.format("Студент с id = %d не найден", studentUpdateStudyGroupDto.getStudentId())));
         log.info("По id = {}, найден студент: {}", studentUpdateStudyGroupDto.getStudentId(), foundStudentEntity);
 
-        if (foundStudentEntity.getGroup() != null) {
+        if (foundStudentEntity.getGroup() != null
+                && foundStudentEntity.getGroup().getId().equals(studentUpdateStudyGroupDto.getGroupId())) {
             log.info("Нельзя поместить студента в группу так как он уже в группе: {}", foundStudentEntity.getGroup());
             throw new InvalidGroupChangeException("Нельзя изменить группу так как студент уже находится в группе.");
         }
