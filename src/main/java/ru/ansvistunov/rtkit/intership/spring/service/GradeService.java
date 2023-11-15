@@ -71,7 +71,6 @@ public class GradeService {
                 .map(gradeMapper::gradeEntityToGradeDto)
                 .peek(mappedGrade -> log.info("Сопоставленный объект GradeDto: {}", mappedGrade))
                 .toList();
-        log.info("Список полученных оценок: {}", studentGradesDto);
 
         return studentGradesDto;
     }

@@ -63,7 +63,6 @@ public class CurriculumService {
                 .map(curriculumMapper::curriculumEntityToCurriculumDto)
                 .peek(mappedCurriculum -> log.info("Сопоставленный объект CurriculumDto: {}", mappedCurriculum))
                 .toList();
-        log.info("Список полученных учебных групп: {}", foundCurriculumsDto);
 
         return foundCurriculumsDto;
     }

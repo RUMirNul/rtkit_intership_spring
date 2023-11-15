@@ -60,7 +60,6 @@ public class StudyGroupService {
                 .map(studyGroupMapper::studyGroupEntityToStudyGroupDto)
                 .peek(mappedStudyGroup -> log.info("Сопоставленный объект StudyGroupDto: {}", mappedStudyGroup))
                 .toList();
-        log.info("Список учебных групп: {}", result);
 
         return result;
     }
