@@ -90,7 +90,7 @@ public class ControllerExceptionHandler {
      */
     private String createErrorMessage(Exception exception) {
         final String message = exception.getMessage();
-        log.error(ExceptionHandlerUtils.buildErrorMessage(exception));
+        log.error("Ошибка: ", exception);
         return message;
     }
 }
